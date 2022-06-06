@@ -15,7 +15,7 @@ import axios from "axios";
  */
 
 const axiosClient = axios.create({
-    validateStatus: () => true,
+  validateStatus: () => true,
 })
 
 const PORT = 3001;
@@ -59,7 +59,7 @@ describe("step 2 test", () => {
   it("should create a todo", async () => {
     expect(exampleTodo).not.toBeNull();
     if (exampleTodo == null) return;
-    const newTodo = { ...exampleTodo };
+    const newTodo = {...exampleTodo};
     delete newTodo["id"];
     delete newTodo["_id"];
     delete newTodo["__v"];
@@ -75,8 +75,8 @@ describe("step 2 test", () => {
     expect(id).toBeDefined();
 
     // update todo, set false
-    const completeKey = Object.keys(exampleTodo).find((key) =>
-      key.toLowerCase().includes("complete")
+    let completeKey = Object.keys(exampleTodo).find((key) =>
+      key.toLowerCase().includes("complete") || key.toLowerCase().includes("status")
     );
     expect(completeKey).toBeDefined();
 
@@ -116,6 +116,11 @@ describe("step 2 test", () => {
 
     const res2 = await axiosClient.get(`${BASE_URL}/api/todos/${id}`);
     expect(res2.data).not.toEqual(exampleTodo);
+  })
+
+  it('should return 204 for delete of valid but non existent mongodb id', async () => {
+    const resFakeDelete = await axiosClient.delete(`${BASE_URL}/api/todos/629d46c01f6f3f55f19f48ef`);
+    expect(resFakeDelete.status).toBe(204);
   })
 
   it('should return 204 for delete of non valid id', async () => {
