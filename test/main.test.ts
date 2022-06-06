@@ -112,7 +112,7 @@ describe("step 2 test", () => {
     const res = await axiosClient.delete(`${BASE_URL}/api/todos/${id}`);
     expect(res.status).toBe(204);
 
-    await new Promise<void>((res) => setTimeout(() => res(), 2000))
+    await new Promise<void>((res) => setTimeout(() => res(), 200))
 
     const res2 = await axiosClient.get(`${BASE_URL}/api/todos/${id}`);
     expect(res2.data).not.toEqual(exampleTodo);
