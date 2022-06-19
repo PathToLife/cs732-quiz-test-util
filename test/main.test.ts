@@ -76,7 +76,7 @@ describe("step 2 test", () => {
 
     // update todo, set false
     let completeKey = Object.keys(exampleTodo).find((key) =>
-      key.toLowerCase().includes("complete") || key.toLowerCase().includes("status")
+      key.toLowerCase().includes("complete") || key.toLowerCase().includes("status") || key.toLowerCase().includes("done")
     );
     expect(completeKey).toBeDefined();
 
