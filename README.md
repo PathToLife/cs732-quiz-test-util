@@ -1,6 +1,10 @@
 # cs732-quiz-test-util
 Tests 732 backend server on external script
 
+Purpose:
+- To test if server crashes for a reasonable number of tests.
+- To test if server does not meet status code return spec
+
 ## WARNING
 Please double check failed tests for false positives!
 
