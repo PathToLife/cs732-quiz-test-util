@@ -3,7 +3,7 @@ Tests 732 backend server on external script
 
 Purpose:
 - To test if server crashes for a reasonable number of tests.
-- To test if server does not meet status code return spec
+- To test if server returns right status codes according to spec
 
 ## WARNING
 Please double check failed tests for false positives!
